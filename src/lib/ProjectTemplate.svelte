@@ -17,8 +17,8 @@
   dolores facere voluptatibus neque, delectus eos doloribus consequuntur minus
   amet quis nesciunt <dolorem class="lorem" />
 </p>
-<img class="blob" src="./src/assets/blob1.svg" alt="blob1" />
-<img class="blob" src="./src/assets/blob2.svg" alt="blob2" />
+<img class="blob" src="blob1.svg" alt="blob1" />
+<img class="blob" src="blob2.svg" alt="blob2" />
 
 <style>
   h2 {
@@ -41,7 +41,7 @@
     z-index: 4;
   }
 
-  .blob[src="./src/assets/blob1.svg"] {
+  .blob[src="blob1.svg"] {
     z-index: 3;
   }
 </style>
