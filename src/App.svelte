@@ -16,7 +16,7 @@
 <main style={dark ? "--backgroundColor: black" : "--backgroundColor: white"}>
   <Background />
   <img
-    src="/src/assets/globe.png"
+    src="./src/assets/globe.png"
     alt="globe"
     style="animation-delay: calc({scroll} * -1s);"
   />

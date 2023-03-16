@@ -1,4 +1,4 @@
-<img class="head" src="/src/assets/factory.jpeg" alt="3d head scan" />
+<img class="head" src="./src/assets/factory.jpeg" alt="3d head scan" />
 <h1>Hi, I'm Thomas Freeman</h1>
 <b>🖖</b>
 <p>
