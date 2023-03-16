@@ -57,7 +57,7 @@
     left: 0px;
     scale: 1.05;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 0;
     filter: blur(0.8rem);
   }

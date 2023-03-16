@@ -37,12 +37,12 @@
 
   .top {
     transform: rotate(180deg);
-    top: -76px;
+    top: -75px;
   }
 
   .bottom {
     transform: rotate(0deg);
-    top: calc(50rem - 76px);
+    top: calc(50rem - 77px);
   }
 
   svg {

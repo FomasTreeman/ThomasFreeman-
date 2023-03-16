@@ -222,7 +222,7 @@
 <style>
   .scroll-parent {
     position: relative;
-    width: 100%;
+    width: 165%;
     height: 5rem;
     /* padding: 2rem 0; */
     overflow-x: hidden;
@@ -245,11 +245,11 @@
   }
 
   .primary {
-    animation: primary 11s linear infinite;
+    animation: primary 20s linear infinite;
   }
 
   .secondary {
-    animation: secondary 11s linear infinite;
+    animation: secondary 20s linear infinite;
   }
 
   @keyframes primary {
