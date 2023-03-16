@@ -18,6 +18,9 @@
     <a class="card" href="#project" on:click|preventDefault={scrollIntoView}>
       Comms
     </a>
+    <a class="card" href="#readmes" on:click|preventDefault={scrollIntoView}>
+      ReadMe
+    </a>
   </div>
 </div>
 <span class="stack">
@@ -31,7 +34,7 @@
   }
 
   .column {
-    max-height: 40rem;
+    max-height: 10rem;
     flex-direction: column;
     flex-wrap: wrap;
     align-content: baseline;
@@ -40,7 +43,7 @@
   .stack {
     display: flex;
     align-items: center;
-    margin-block: 5rem;
+    margin-top: 5rem;
     width: 100%;
     overflow-x: hidden;
   }

@@ -32,7 +32,7 @@
 
   p {
     max-width: 75%;
-    mix-blend-mode: color-dodge;
+    mix-blend-mode: luminosity;
     font-weight: 500;
     font-size: large;
     border-radius: 1rem;

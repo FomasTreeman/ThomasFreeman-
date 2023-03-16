@@ -1,11 +1,10 @@
 <script>
   import About from "./lib/About.svelte";
   import Background from "./lib/Background.svelte";
-  import DarkMode from "./lib/DarkMode.svelte";
-  import Divider1 from "./lib/Divider1.svelte";
   import ProjectTemplate from "./lib/ProjectTemplate.svelte";
+  import ReadMes from "./lib/ReadMes.svelte";
   import Routes from "./lib/Routes.svelte";
-  import Stack from "./lib/Stack.svelte";
+
   let dark = true;
   let scrollY;
   let innerHeight;
@@ -30,7 +29,14 @@
   </section>
 
   <section id="routes">
+    <h1 class="center title">CONTENT.</h1>
     <Routes />
+  </section>
+
+  <section id="readmes">
+    <hr />
+    <h1 class="center title">MY RECENT PROJECTS.</h1>
+    <ReadMes />
   </section>
 </main>
 <svelte:window bind:scrollY bind:innerHeight />
@@ -38,6 +44,12 @@
 <style>
   :global(:root) {
     --margin-left: 5rem;
+  }
+
+  :global(.center) {
+    display: block;
+    text-align: center;
+    margin-inline: auto;
   }
 
   section {
@@ -56,6 +68,21 @@
 
   section#routes {
     margin-block: calc(76px * 2);
+    height: fit-content;
+  }
+
+  .title {
+    font-size: xx-large;
+  }
+
+  #readmes .title {
+    margin-top: 5rem;
+  }
+
+  hr {
+    border: 2px solid black;
+    margin-block: 3rem;
+    z-index: 20;
   }
 
   img[alt="globe"] {

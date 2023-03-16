@@ -220,9 +220,15 @@
 </div>
 
 <style>
+  :global(:root) {
+    --img-width: 15%;
+    /* 22 is number of imgs */
+    /* breaks at 900px width */
+    --stack-width: calc((var(--img-width) * 22) / 2);
+  }
   .scroll-parent {
     position: relative;
-    width: 165%;
+    width: var(--stack-width);
     height: 5rem;
     /* padding: 2rem 0; */
     overflow-x: hidden;
@@ -240,7 +246,7 @@
   }
 
   .scroll-element img {
-    width: 15%;
+    width: var(--img-width);
     height: 5rem;
   }
 
@@ -257,13 +263,13 @@
       left: 0%;
     }
     to {
-      left: -165%;
+      left: calc(var(--stack-width) * -1);
     }
   }
 
   @keyframes secondary {
     from {
-      left: 165%;
+      left: var(--stack-width);
     }
     to {
       left: 0%;
