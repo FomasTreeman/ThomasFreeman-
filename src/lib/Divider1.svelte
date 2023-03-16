@@ -1,4 +1,8 @@
-<div class="custom-shape-divider-bottom-1678886219">
+<script>
+  export let flipped;
+</script>
+
+<div class="shape-divider {flipped ? 'bottom' : 'top'}">
   <svg
     data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
@@ -23,25 +27,32 @@
 </div>
 
 <style>
-  /* divider */
-  .custom-shape-divider-bottom-1678886219 {
+  .shape-divider {
     position: relative;
-    top: -76px;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
-    transform: rotate(180deg);
   }
 
-  .custom-shape-divider-bottom-1678886219 svg {
+  .top {
+    transform: rotate(180deg);
+    top: -76px;
+  }
+
+  .bottom {
+    transform: rotate(0deg);
+    top: calc(50rem - 76px);
+  }
+
+  svg {
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
     height: 76px;
   }
 
-  .custom-shape-divider-bottom-1678886219 .shape-fill {
+  .shape-fill {
     fill: #050405;
   }
 </style>

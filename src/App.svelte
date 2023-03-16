@@ -1,81 +1,128 @@
 <script>
+  import About from "./lib/About.svelte";
+  import Background from "./lib/Background.svelte";
   import DarkMode from "./lib/DarkMode.svelte";
   import Divider1 from "./lib/Divider1.svelte";
+  import ProjectTemplate from "./lib/ProjectTemplate.svelte";
+  import Stack from "./lib/Stack.svelte";
   let dark = true;
+  let scrollY;
+  let innerHeight;
+  let scroll;
+
+  function scrollIntoView({ target }) {
+    const el = document.querySelector(target.getAttribute("href"));
+    if (!el) return;
+    el.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+
+  $: scroll = scrollY / innerHeight;
 </script>
 
 <main style={dark ? "--backgroundColor: black" : "--backgroundColor: white"}>
-  <section>
-    <h1>Thomas Freeman</h1>
-    <img class="head" src="/src/assets/factory.jpeg" alt="3d head scan" />
-
-    <!-- <DarkMode bind:dark /> -->
+  <Background />
+  <img
+    src="/src/assets/globe.png"
+    alt="globe"
+    style="animation-delay: calc({scroll} * -1s);"
+  />
+  <section id="about">
+    <About />
   </section>
-  <section class="project">
-    <Divider1 />
-    <h2>My Messaging Service</h2>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi, fugit
-      quisquam. Rem similique magnam cumque quod fugiat corporis doloribus
-      aspernatur, at dolores. Ratione beatae quasi sint reiciendis
-      necessitatibus quibusdam vitae?
-    </p>
-    <img class="blob" src="/src/assets/blob1.svg" alt="blob1" />
-    <img class="blob" src="/src/assets/blob2.svg" alt="blob2" />
+
+  <section id="project">
+    <ProjectTemplate />
+  </section>
+
+  <section id="routes">
+    <div class="flex">
+      <div class="flex column">
+        <a class="card" href="#about" on:click|preventDefault={scrollIntoView}>
+          About
+        </a>
+        <a
+          class="card"
+          href="#project"
+          on:click|preventDefault={scrollIntoView}
+        >
+          Comms
+        </a>
+      </div>
+    </div>
+    <span class="stack">
+      <Stack />
+    </span>
   </section>
 </main>
+<svelte:window bind:scrollY bind:innerHeight />
 
 <style>
   :global(:root) {
     --margin-left: 5rem;
   }
 
-  h1 {
-    margin: 0rem 0rem 0rem 7rem;
-    padding-top: 5rem;
-    color: #050405;
-    font-size: xxx-large;
+  .flex {
+    margin-left: var(--margin-left);
+    display: flex;
   }
 
-  h2 {
-    padding-top: 1rem;
+  .column {
+    max-height: 40rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: baseline;
   }
 
-  img.head {
-    margin: 8rem;
-    height: 20rem;
-    width: 20rem;
-    object-fit: cover;
-    border-radius: 50%;
-    z-index: 5;
-  }
   section {
     position: relative;
     height: 50rem;
   }
 
-  .project > :not(:first-child) {
-    margin-left: var(--margin-left);
+  section#routes {
+    margin-block: calc(76px * 2);
   }
 
-  p {
-    max-width: calc(100% - 40rem - var(--margin-left));
-  }
-
-  main > :nth-child(2) {
+  section#project {
     margin: 0%;
     background-color: rgb(5, 4, 5);
   }
 
-  .blob {
-    position: absolute;
-    width: 40rem;
-    top: 4rem;
-    right: 0rem;
-    z-index: 4;
+  .stack {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
   }
 
-  .blob[src="/src/assets/blob1.svg"] {
-    z-index: 3;
+  a {
+    margin: 1rem;
+    padding-block: auto;
+    width: 15rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 2rem;
+    font-size: xx-large;
+    text-transform: uppercase;
+    font-weight: 800;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  a:hover {
+    transform: skew(-20deg);
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  img[alt="globe"] {
+    display: inline-block;
+    position: fixed;
+    right: 0px;
+    margin: 1rem;
+    width: 5rem;
+    animation: rotate 1s linear infinite;
+    animation-play-state: paused;
+    z-index: 20;
   }
 </style>
