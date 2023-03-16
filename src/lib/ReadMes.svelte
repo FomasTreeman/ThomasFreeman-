@@ -21,7 +21,7 @@
       {
         headers: {
           Accept: "application/vnd.github+json",
-          Authorization: "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",
+          Authorization: import.meta.env.TOKEN,
         },
       }
     );
