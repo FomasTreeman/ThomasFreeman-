@@ -5,7 +5,16 @@
   let mds = [];
 
   onMount(async () => {
-    const pinned = ["SoonTHC", "KodiTV"];
+    const pinned = [
+      "SoonTHC",
+      "KodiTV",
+      "Weather-TM",
+      "Comms",
+      // "Three.js-Experiment",
+      "face-recognition-brain",
+      // "Boids_Development",
+      "Portfolio",
+    ];
     let pinnedMds = [];
     const resp = await fetch(
       `https://api.github.com/users/FomasTreeman/repos?per_page=100`,
