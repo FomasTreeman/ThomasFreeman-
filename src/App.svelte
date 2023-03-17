@@ -29,12 +29,12 @@
   </section>
 
   <section id="routes">
-    <h1 class="center title">CONTENT.</h1>
+    <!-- <h1 class="center title">CONTENT.</h1> -->
     <Routes />
   </section>
 
   <section id="readmes">
-    <hr />
+    <!-- <hr /> -->
     <h1 class="center title">MY RECENT PROJECTS.</h1>
     <ReadMes />
   </section>
@@ -77,12 +77,6 @@
 
   #readmes .title {
     margin-top: 5rem;
-  }
-
-  hr {
-    border: 2px solid black;
-    margin-block: 3rem;
-    z-index: 20;
   }
 
   img[alt="globe"] {
