@@ -69,6 +69,8 @@
   section#project {
     margin: 0%;
     background-color: rgb(5, 4, 5);
+    position: relative;
+    padding-top: 5rem;
   }
 
   section#routes {

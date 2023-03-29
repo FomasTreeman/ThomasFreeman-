@@ -28,7 +28,7 @@
 
 <style>
   .shape-divider {
-    position: relative;
+    position: absolute;
     left: 0;
     width: 100%;
     overflow: hidden;
@@ -42,7 +42,7 @@
 
   .bottom {
     transform: rotate(0deg);
-    top: 75px;
+    bottom: -75px;
   }
 
   svg {
