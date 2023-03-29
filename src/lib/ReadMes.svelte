@@ -2,7 +2,13 @@
   import showdown from "showdown";
   import { onMount } from "svelte";
   import { Base64 } from "../../node_modules/js-base64";
-  let mds = [];
+  import ReadMeTitle from "./ReadMeTitle.svelte";
+  let repos = [];
+  const productions = {
+    Comms: "https://comm-a.vercel.app/",
+    "Weather-TM": "https://fac27.github.io/Weather-TM/",
+  };
+
   const pinned = [
     "Comms",
     "Weather-TM",
@@ -15,13 +21,13 @@
   ];
 
   async function getHtml() {
-    return await new showdown.Converter();
+    return new showdown.Converter();
   }
 
   let promise = getHtml();
 
   onMount(async () => {
-    let pinnedMds = [];
+    const tempRepos = [];
     const resp = await fetch(
       `https://api.github.com/users/FomasTreeman/repos?per_page=100`,
       {
@@ -31,8 +37,8 @@
         },
       }
     );
-    const repos = await resp.json();
-    const repoNames = repos.map((repo) => repo.full_name.split("/")[1]);
+    const jsonResp = await resp.json();
+    const repoNames = jsonResp.map((repo) => repo.full_name.split("/")[1]);
     const pinnedRepos = repoNames.filter((name) => pinned.includes(name));
     await Promise.all(
       pinnedRepos.map(async (repoName) => {
@@ -40,22 +46,36 @@
           `https://api.github.com/repos/FomasTreeman/${repoName}/readme`
         );
         const json = await resp.json();
-        pinnedMds.push(Base64.decode(json.content));
+        tempRepos.push({
+          md: Base64.decode(json.content),
+          name: repoName,
+          url: `https://github.com/FomasTreeman/${repoName}`,
+        });
       })
     );
-    mds = pinnedMds;
+    repos = tempRepos;
   });
 </script>
 
 <!-- .md file -->
-{#each mds as md, index}
-  <div class={index % 2 == 0 ? "flip" : ""}>
-    <img src="{pinned[index]}.png" alt="project scrnsht" />
+{#each repos as repo, index}
+  <!-- <div class={index % 2 == 0 ? "flip" : ""}> -->
+  <div>
+    <!-- <img src="{repo.name}.png" alt="project scrnsht" /> -->
     <article id="md ">
       {#await promise}
         <p>... waiting</p>
       {:then converter}
-        {@html converter.makeHtml(md)}
+        <header>
+          {#if productions[repo.name]}
+            <a href={productions[repo.name]} class="prod-link">
+              <ReadMeTitle {repo} />
+            </a>
+          {:else}
+            <ReadMeTitle {repo} />
+          {/if}
+        </header>
+        {@html converter.makeHtml(repo.md)}
       {:catch}
         <p>page in development</p>
       {/await}
@@ -68,11 +88,7 @@
     background-color: black;
     mix-blend-mode: luminosity;
     max-width: 76%;
-    /* margin-block: 2rem;
-    margin-inline: auto;
-    */
     padding: 3rem;
-    /* border-radius: 2rem; */
     box-shadow: 10px 10px 10px rgba(59, 52, 21, 0.375);
   }
 
@@ -88,8 +104,22 @@
     flex-direction: row-reverse;
   }
 
+  a {
+    z-index: 20;
+  }
+
+  a.prod-link {
+    font-weight: 800;
+    font-size: 3rem;
+    color: greenyellow;
+    text-decoration-line: underline;
+  }
+
+  a.prod-link:hover {
+    mix-blend-mode: lighten;
+  }
+
   img {
     height: 20rem;
-    /* margin: 2rem; */
   }
 </style>

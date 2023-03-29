@@ -42,7 +42,7 @@
 
   .bottom {
     transform: rotate(0deg);
-    top: calc(50rem - 77px);
+    top: 75px;
   }
 
   svg {

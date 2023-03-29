@@ -4,6 +4,7 @@
   import ProjectTemplate from "./lib/ProjectTemplate.svelte";
   import ReadMes from "./lib/ReadMes.svelte";
   import Routes from "./lib/Routes.svelte";
+  // import Contact from "./lib/Contact.svelte";
 
   let dark = true;
   let scrollY;
@@ -33,9 +34,13 @@
     <Routes />
   </section>
 
+  <!-- <section id="contact">
+    <Contact />
+  </section> -->
+
   <section id="readmes">
     <!-- <hr /> -->
-    <h1 class="center title">MY RECENT PROJECTS.</h1>
+    <h1 class="center title">MY PROJECTS.</h1>
     <ReadMes />
   </section>
 </main>
@@ -77,6 +82,9 @@
 
   #readmes .title {
     margin-top: 5rem;
+    max-width: max-content;
+    padding: 1rem;
+    border: 0.5rem solid var(--color);
   }
 
   img[alt="globe"] {
