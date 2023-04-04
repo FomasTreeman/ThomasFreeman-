@@ -64,7 +64,7 @@
     <!-- <img src="{repo.name}.png" alt="project scrnsht" /> -->
     <article id="md ">
       {#await promise}
-        <p>... waiting</p>
+        <h1>... waiting</h1>
       {:then converter}
         <header>
           {#if productions[repo.name]}
@@ -77,7 +77,7 @@
         </header>
         {@html converter.makeHtml(repo.md)}
       {:catch}
-        <p>page in development</p>
+        <h1>page in development</h1>
       {/await}
     </article>
   </div>
@@ -99,10 +99,10 @@
     margin: 5rem;
     gap: 1rem;
   }
-
+  /* 
   .flip {
     flex-direction: row-reverse;
-  }
+  } */
 
   a {
     z-index: 20;
@@ -119,7 +119,16 @@
     mix-blend-mode: lighten;
   }
 
-  img {
-    height: 20rem;
+  @media (max-width: 768px) {
+    article {
+      max-width: 100%;
+      padding: 2rem;
+      /* temporary solution for image */
+      overflow-x: hidden;
+    }
+    div {
+      margin: 0%;
+      margin-top: 4rem;
+    }
   }
 </style>

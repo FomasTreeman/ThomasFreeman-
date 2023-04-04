@@ -30,16 +30,10 @@
   </section>
 
   <section id="routes">
-    <!-- <h1 class="center title">CONTENT.</h1> -->
     <Routes />
   </section>
 
-  <!-- <section id="contact">
-    <Contact />
-  </section> -->
-
   <section id="readmes">
-    <!-- <hr /> -->
     <h1 class="center title">MY PROJECTS.</h1>
     <ReadMes />
   </section>
@@ -67,9 +61,9 @@
   }
 
   section#project {
+    position: relative;
     margin: 0%;
     background-color: rgb(5, 4, 5);
-    position: relative;
     padding-top: 5rem;
   }
 

@@ -113,11 +113,6 @@
     color: var(--link-color-hover);
   }
 
-  .round-card:hover span.flex {
-    /* visibility: visible; */
-    /* transition: visibility 1s ease-out, opacity 0.5s linear; */
-  }
-
   /* ? signal selected/visible */
   button:not(> .hidden) {
     background-color: yellow;
@@ -142,5 +137,44 @@
 
   a img:hover {
     animation-play-state: running;
+  }
+
+  @media (max-width: 1000px) {
+    .column {
+      max-height: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-content: baseline;
+      margin-left: 0;
+    }
+
+    .card {
+      margin: 1rem;
+      width: 8rem;
+      height: 8rem;
+      font-size: x-large;
+      border-radius: 1rem;
+    }
+
+    .small-card {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .round-card {
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      font-size: xx-large;
+    }
+
+    button span.flex {
+      position: absolute;
+      top: 5.5rem;
+    }
+
+    a img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 </style>
