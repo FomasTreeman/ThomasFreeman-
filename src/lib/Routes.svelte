@@ -1,8 +1,5 @@
 <script>
-  import Stack from "./Stack.svelte";
-
-  let hidden = true;
-
+  import { fly } from "svelte/transition";
   function scrollIntoView({ target }) {
     const el = document.querySelector(target.getAttribute("href"));
     if (!el) return;
@@ -10,101 +7,84 @@
       behavior: "smooth",
     });
   }
-
-  $: console.log(hidden);
 </script>
 
-<div class="flex column">
+<div class="flex">
   <a
-    class="card small-card"
+    class="card"
+    transition:fly={{ x: 150 }}
     href="#about"
     on:click|preventDefault={scrollIntoView}
   >
     About Me
   </a>
   <a
-    class="card small-card"
+    class="card"
+    transition:fly={{ x: 150 }}
     href="#project"
     on:click|preventDefault={scrollIntoView}
   >
     Betting Bot
   </a>
-  <a class="card" href="#readmes" on:click|preventDefault={scrollIntoView}>
-    ReadMes / <br /> Projects
+  <a
+    class="card"
+    transition:fly={{ x: 150 }}
+    href="#readmes"
+    on:click|preventDefault={scrollIntoView}
+  >
+    Projects
   </a>
-  <button class="card round-card" on:click={() => (hidden = !hidden)}>
-    <h1 class:hidden={!hidden}>@</h1>
-    <span class="flex" class:hidden>
-      <a href="https://github.com/FomasTreeman">
-        <img src="github.png" alt="github" />
-      </a>
-      <a href="https://www.linkedin.com/in/fomas-treeman/">
-        <img src="linkedin.png" alt="linkedin" />
-      </a>
-      <a href="mailto: tom@team-freeman.com">
-        <img src="gmail.png" alt="gmail" />
-      </a>
-    </span>
-  </button>
 </div>
+<span class="flex col" transition:fly={{ y: -100 }}>
+  <a href="https://github.com/FomasTreeman">
+    <img style="filter: invert(1)" src="github.png" alt="github" />
+  </a>
+  <a href="https://www.linkedin.com/in/fomas-treeman/">
+    <img src="linkedin.png" alt="linkedin" />
+  </a>
+  <a href="mailto: tom@team-freeman.com">
+    <img src="gmail.png" alt="gmail" />
+  </a>
+</span>
+
 <!-- <a href="https://www.flaticon.com/free-icons/linkedin" title="linkedin icons"
   >Linkedin icons created by Flaticon</a
 > -->
-<span class="stack">
-  <Stack />
-</span>
 
 <style>
+  div {
+    margin-right: 8rem;
+    height: 7rem;
+  }
+
+  div > * {
+    margin-bottom: 2rem;
+  }
+
   .flex {
     display: flex;
-    gap: 1rem;
+    /* flex-wrap: wrap; */
+    justify-content: end;
+    align-items: end;
+    gap: 5%;
   }
 
-  .column {
-    max-height: 25rem;
+  .col {
     flex-direction: column;
-    flex-wrap: wrap;
-    align-content: baseline;
-    margin-left: var(--margin-left);
-  }
-
-  .stack {
-    display: flex;
-    align-items: center;
-    margin-top: 5rem;
-    width: 100%;
-    overflow-x: hidden;
   }
 
   .card {
-    margin: 1rem;
-    width: 23rem;
-    height: 23rem;
+    padding: 0.7rem;
+    width: fit-content;
+    height: fit-content;
     background-color: var(--background-color);
     border-radius: 2rem;
-    font-size: xx-large;
+    font-size: x-large;
     text-transform: uppercase;
     font-weight: 800;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     box-shadow: 10px 10px 0px 0px var(--link-color);
-    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
-  .small-card {
-    width: 10rem;
-    height: 10rem;
-  }
-
-  .round-card {
-    color: var(--link-color);
-    border-radius: 50%;
-    font-size: xxx-large;
-    box-shadow: none;
-    border-color: var(--link-color);
-    border-width: 0.5rem;
+    /* transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); */
   }
 
   a.card:hover {
@@ -113,68 +93,34 @@
     color: var(--link-color-hover);
   }
 
-  /* ? signal selected/visible */
-  button:not(> .hidden) {
-    background-color: yellow;
-  }
-
-  .hidden {
-    /* fade in from the side */
-    visibility: hidden;
-  }
-
-  button span.flex {
-    position: absolute;
-    top: 11.5rem;
-  }
-
   a img {
-    width: 3rem;
-    height: 3rem;
-    animation: rotate 1s ease-in-out infinite;
-    animation-play-state: paused;
-  }
-
-  a img:hover {
-    animation-play-state: running;
+    width: 2.5rem;
+    margin-inline: 2.3rem;
+    margin-block: 0.7rem;
   }
 
   @media (max-width: 1000px) {
-    .column {
-      max-height: 100%;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-content: baseline;
-      margin-left: 0;
+    a img {
+      width: 2rem;
+      margin-inline: 2.5rem;
+    }
+
+    div {
+      margin-top: 1rem;
+      height: fit-content;
+    }
+
+    span {
+      position: absolute;
+      top: 7rem;
+      right: 0;
+    }
+    .flex {
+      flex-direction: column;
     }
 
     .card {
-      margin: 1rem;
-      width: 8rem;
-      height: 8rem;
-      font-size: x-large;
-      border-radius: 1rem;
-    }
-
-    .small-card {
-      width: 5rem;
-      height: 5rem;
-    }
-
-    .round-card {
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      font-size: xx-large;
-    }
-
-    button span.flex {
-      position: absolute;
-      top: 5.5rem;
-    }
-
-    a img {
-      width: 1.5rem;
-      height: 1.5rem;
+      font-size: medium;
     }
   }
 </style>

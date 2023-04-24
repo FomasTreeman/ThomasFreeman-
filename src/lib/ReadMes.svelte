@@ -55,6 +55,12 @@
     );
     repos = tempRepos;
   });
+
+  function renderHtml(html) {
+    let reducedHtml = html.slice(0, 1000);
+
+    return reducedHtml;
+  }
 </script>
 
 <!-- .md file -->
@@ -75,7 +81,9 @@
             <ReadMeTitle {repo} />
           {/if}
         </header>
-        {@html converter.makeHtml(repo.md)}
+        {@html renderHtml(converter.makeHtml(repo.md))}
+        <button>...</button>
+        <!-- {@html converter.makeHtml(repo.md)} -->
       {:catch}
         <h1>page in development</h1>
       {/await}
