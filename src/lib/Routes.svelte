@@ -1,10 +1,10 @@
 <script>
-  import { fly } from "svelte/transition";
+  import { fly } from 'svelte/transition';
   function scrollIntoView({ target }) {
-    const el = document.querySelector(target.getAttribute("href"));
+    const el = document.querySelector(target.getAttribute('href'));
     if (!el) return;
     el.scrollIntoView({
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
 </script>
@@ -36,6 +36,9 @@
   </a>
 </div>
 <span class="flex col" transition:fly={{ y: -100 }}>
+  <a href="/bal">
+    <img src="fac.svg" alt="FAC" />
+  </a>
   <a href="https://github.com/FomasTreeman">
     <img style="filter: invert(1)" src="github.png" alt="github" />
   </a>
