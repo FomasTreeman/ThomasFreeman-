@@ -7,7 +7,7 @@
   fascinated by the constantly evolving tech industry and thrive in fast-paced
   environments that challenges me to learn and apply new technologies. I look
   forward to sharing my unique perspective and learning from others as I embark
-  on a successful and rewarding career in software development. <a href="/bal">
+  on a successful and rewarding career in software development. <a href="/fac">
     🎊 Click the 🌍 for extras. Visit my FAC portfolio briefly too 📛
   </a>
 </p>
@@ -42,6 +42,14 @@
     border-radius: 1rem;
     padding: 2rem;
     background-color: red;
+  }
+
+  a {
+    color: rgb(0, 44, 163);
+    opacity: 0.8;
+  }
+  a:hover {
+    color: black;
   }
 
   img {

@@ -6,13 +6,14 @@
 <article>
   <h2>My automated betting bot</h2>
   <p>
-    This project was a significant undertaking, proposed by a friend, and is
-    very open-ended. I utilized skills in Shell scripting, socket handling,
-    security, cypress/web scraping, and Excel. Additionally, I created a custom
-    logging system and previously deployed it on my NAS within a Docker
-    container but found a limitation with a tool i was using and later removed
-    the need for E2E testing tools for scraping and thereby also not needing a
-    docker container.
+    This project was a significant undertaking, the client had a betting system
+    that wasn't as performant with slow manual input so required this to be
+    automated. I utilized skills in Shell scripting, socket handling, security,
+    cypress/web scraping, and Excel. Additionally, I created a custom logging
+    system and previously deployed it on my NAS within a Docker container but
+    found a limitation with a tool i was using and later removed the need for
+    E2E testing tools for scraping and thereby also not needing a docker
+    container.
   </p>
   <h3>🖌️ UI:</h3>
   <p>
@@ -53,8 +54,14 @@
     of the page and parsing with cheerio.js was quicker and easier.
   </p>
 </article>
-<img class="blob" src="blob1.svg" alt="blob1" />
-<img class="blob" src="blob2.svg" alt="blob2" />
+
+<div class="blob-container">
+  <img class="blob" src="blob1.svg" alt="blob1" />
+  <img class="blob" src="blob2.svg" alt="blob2" />
+  <div class="mask cat" />
+  <div class="mask money" />
+  <div class="mask rodeo" />
+</div>
 <Divider1 flipped={true} />
 
 <style>
@@ -66,21 +73,74 @@
     max-width: calc(100% - 40vw - var(--margin-left) - 2rem);
   }
 
-  .blob {
+  .blob-container {
     position: absolute;
     width: 40vw;
     top: 4rem;
     right: 0rem;
-    z-index: 4;
   }
 
-  .blob[src='blob1.svg'] {
-    z-index: 3;
+  .blob-container * {
+    position: absolute;
+  }
+
+  img[alt='blob1'] {
+    z-index: 1;
+    max-height: 70vh;
+    top: 5rem;
+  }
+
+  img[alt='blob2'] {
+    z-index: 2;
+    left: -10rem;
+    top: -5rem;
+  }
+
+  .mask {
+    z-index: 2;
+    width: 20vw;
+    height: 20vh;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    mask-size: half;
+    mask-repeat: no-repeat;
+    mask-position: center;
+
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+  }
+
+  .cat {
+    background-image: url(https://media1.giphy.com/media/cfuL5gqFDreXxkWQ4o/200.gif);
+    mask-image: url(blob-1.svg);
+    -webkit-mask-image: url(blob-1.svg);
+    top: 4rem;
+    left: -5rem;
+  }
+
+  .money {
+    background-image: url(https://media0.giphy.com/media/67ThRZlYBvibtdF9JH/200.gif);
+    mask-image: url(wobbly-blob.svg);
+    -webkit-mask-image: url(wobbly-blob.svg);
+    top: 20vh;
+    right: 5vw;
+  }
+
+  .rodeo {
+    background-image: url(https://media3.giphy.com/media/vgwG8SvPs1cltGeikP/200.gif);
+    mask-image: url(wobbly-blob-2.svg);
+    -webkit-mask-image: url(wobbly-blob-2.svg);
+    top: 40vh;
   }
 
   article {
     height: inherit;
     overflow-y: scroll;
+    scroll-snap-stop: al;
   }
 
   article > * {
@@ -93,7 +153,7 @@
       margin-left: 2rem;
     }
 
-    .blob {
+    .blob-container {
       display: none;
     }
 
@@ -104,7 +164,6 @@
     h2 {
       margin-top: 0rem;
     }
-
     h3 {
       margin-left: 0px !important;
       margin-bottom: 0.5rem;
