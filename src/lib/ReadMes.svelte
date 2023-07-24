@@ -2,6 +2,7 @@
   import showdown from 'showdown';
   import { onMount } from 'svelte';
   import { Base64 } from '../../node_modules/js-base64';
+  import scrollIntoView from './utils/scroll';
   import ReadMeTitle from './ReadMeTitle.svelte';
   import Saos from 'saos';
 
@@ -14,15 +15,11 @@
   };
 
   const pinned = [
-    'Comms',
-    'Weather-TM',
-    // "SoonTHC",
-    'KodiTV',
+    'Rich_System_Site',
     'home-page',
-    // "Three.js-Experiment",
-    // "face-recognition-brain",
-    // "Boids_Development",
-    // "Portfolio",
+    'Comms',
+    'KodiTV',
+    // 'Weather-TM',
   ];
 
   async function getHtml() {
@@ -70,8 +67,10 @@
 
 <section class="article article-layout pin-board">
   <ol>
-    {#each repos as repo}
-      <li><a>{repo.name}</a></li>
+    {#each pinned as repo}
+      <li>
+        <a href={`#${repo}`} on:click|preventDefault={scrollIntoView}>{repo}</a>
+      </li>
     {/each}
   </ol>
 </section>
@@ -81,9 +80,9 @@
   <Saos
     animation={'slide-in-bottom 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both'}
   >
-    <div class="article-layout">
+    <div id={repo.name} class="article-layout">
       <!-- <img src="{repo.name}.png" alt="project scrnsht" /> -->
-      <article id="md " class="article">
+      <article id="md" class="article">
         {#await promise}
           <h1>... waiting</h1>
         {:then converter}
