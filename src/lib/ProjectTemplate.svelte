@@ -86,7 +86,7 @@
 
   img[alt='blob1'] {
     z-index: 1;
-    max-height: 70vh;
+    max-height: 60vh;
     top: 5rem;
   }
 

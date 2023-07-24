@@ -1,4 +1,6 @@
-<img class="head" src="plant.jpg" alt="3d head scan" />
+<video autoplay loop muted>
+  <source src="hello-there.webm" type="video/mp4" />
+</video>
 <h1>Hi, I'm Thomas Freeman</h1>
 <b>🖖</b>
 <p>
@@ -52,7 +54,7 @@
     color: black;
   }
 
-  img {
+  video {
     height: 15rem;
     width: 15rem;
     object-fit: cover;
@@ -61,7 +63,7 @@
   }
 
   @media (max-width: 768px) {
-    img {
+    video {
       width: 10rem;
       height: 10rem;
     }

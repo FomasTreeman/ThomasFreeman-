@@ -5,7 +5,9 @@
   import ReadMeTitle from './ReadMeTitle.svelte';
   import Saos from 'saos';
 
+  let promise = getHtml();
   let repos = [];
+
   const productions = {
     Comms: 'https://comm-a.vercel.app/',
     'Weather-TM': 'https://fac27.github.io/Weather-TM/',
@@ -16,6 +18,7 @@
     'Weather-TM',
     // "SoonTHC",
     'KodiTV',
+    'home-page',
     // "Three.js-Experiment",
     // "face-recognition-brain",
     // "Boids_Development",
@@ -26,12 +29,18 @@
     return new showdown.Converter();
   }
 
-  let promise = getHtml();
+  function renderHtml(html) {
+    return html.slice(0, 1000);
+  }
+
+  function handleObserver(x) {
+    console.info(x.detail.observing);
+  }
 
   onMount(async () => {
     const tempRepos = [];
     const resp = await fetch(
-      `https://api.github.com/users/FomasTreeman/repos?per_page=100`,
+      `https://api.github.com/users/FomasTreeman/repos?per_page=100&sort=updated`,
       {
         headers: {
           Accept: 'application/vnd.github+json',
@@ -57,27 +66,24 @@
     );
     repos = tempRepos;
   });
-
-  function renderHtml(html) {
-    let reducedHtml = html.slice(0, 1000);
-
-    return reducedHtml;
-  }
-
-  function handleObserver(x) {
-    console.info(x.detail.observing);
-  }
 </script>
 
+<section class="article article-layout pin-board">
+  <ol>
+    {#each repos as repo}
+      <li><a>{repo.name}</a></li>
+    {/each}
+  </ol>
+</section>
 <!-- .md file -->
-{#each repos as repo, index}
+{#each repos as repo}
   <!-- <div class={index % 2 == 0 ? "flip" : ""}> -->
   <Saos
     animation={'slide-in-bottom 1s cubic-bezier(0.35, 0.5, 0.65, 0.95) both'}
   >
-    <div>
+    <div class="article-layout">
       <!-- <img src="{repo.name}.png" alt="project scrnsht" /> -->
-      <article id="md ">
+      <article id="md " class="article">
         {#await promise}
           <h1>... waiting</h1>
         {:then converter}
@@ -92,7 +98,6 @@
           </header>
           {@html renderHtml(converter.makeHtml(repo.md))}
           <button>...</button>
-          <!-- {@html converter.makeHtml(repo.md)} -->
         {:catch}
           <h1>page in development</h1>
         {/await}
@@ -103,7 +108,7 @@
 <Saos on:update={handleObserver}>...</Saos>
 
 <style>
-  article {
+  .article {
     background-color: black;
     mix-blend-mode: luminosity;
     max-width: 76%;
@@ -111,17 +116,17 @@
     box-shadow: 10px 10px 10px rgba(59, 52, 21, 0.375);
   }
 
-  div {
+  .article-layout {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 5rem;
     gap: 1rem;
   }
-  /* 
-  .flip {
-    flex-direction: row-reverse;
-  } */
+
+  .pin-board {
+    max-width: 20rem;
+  }
 
   a {
     z-index: 20;

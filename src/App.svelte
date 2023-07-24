@@ -1,10 +1,10 @@
 <script>
-  import About from "./lib/About.svelte";
-  import Background from "./lib/Background.svelte";
-  import ProjectTemplate from "./lib/ProjectTemplate.svelte";
-  import ReadMes from "./lib/ReadMes.svelte";
-  import Routes from "./lib/Routes.svelte";
-  import Stack from "./lib/Stack.svelte";
+  import About from './lib/About.svelte';
+  import Background from './lib/Background.svelte';
+  import ProjectTemplate from './lib/ProjectTemplate.svelte';
+  import ReadMes from './lib/ReadMes.svelte';
+  import Routes from './lib/Routes.svelte';
+  import Stack from './lib/Stack.svelte';
   // import Contact from "./lib/Contact.svelte";
 
   let dark = true;
@@ -16,7 +16,7 @@
   $: scroll = scrollY / innerHeight;
 </script>
 
-<main style={dark ? "--backgroundColor: black" : "--backgroundColor: white"}>
+<main style={dark ? '--backgroundColor: black' : '--backgroundColor: white'}>
   <Background />
   {#if nav}
     <nav>
@@ -25,7 +25,7 @@
   {/if}
   <button class="globe" on:click={() => (nav = !nav)}>
     <img
-      src="globe.png"
+      src="globe.webp"
       alt="globe"
       style="animation-delay: calc({scroll} * -1s);"
     />
@@ -121,7 +121,7 @@
     border: 0.5rem solid var(--color);
   }
 
-  img[alt="globe"] {
+  img[alt='globe'] {
     position: relative;
     width: 100%;
     animation: rotate 1s linear infinite;
