@@ -65,8 +65,8 @@
   });
 </script>
 
-<section class="article article-layout pin-board">
-  <ol>
+<section class=" article-layout pin-board">
+  <ol class="project-list">
     {#each pinned as repo}
       <li>
         <a href={`#${repo}`} on:click|preventDefault={scrollIntoView}>{repo}</a>
@@ -123,8 +123,37 @@
     gap: 1rem;
   }
 
-  .pin-board {
-    max-width: 20rem;
+  /* .pin-board {
+  } */
+
+  .project-list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 0px;
+    margin-top: 1rem;
+  }
+
+  .project-list > * {
+    list-style: none;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1rem;
+    -webkit-box-shadow: rgb(255, 128, 128) 5px 5px 15px 5px,
+      rgb(255, 228, 136) -9px 5px 15px 5px,
+      rgb(140, 255, 133) -7px -5px 15px 5px,
+      rgb(128, 199, 255) 12px -5px 15px 5px,
+      rgb(228, 136, 255) 12px 10px 15px 7px,
+      rgb(255, 97, 107) -10px 10px 15px 7px,
+      rgb(142, 92, 255) -10px -7px 27px 1px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: rgb(255, 128, 128) 5px 5px 15px 5px,
+      rgb(255, 228, 136) -9px 5px 15px 5px,
+      rgb(140, 255, 133) -7px -5px 15px 5px,
+      rgb(128, 199, 255) 12px -5px 15px 5px,
+      rgb(228, 136, 255) 12px 10px 15px 7px,
+      rgb(255, 97, 107) -10px 10px 15px 7px,
+      rgb(142, 92, 255) -10px -7px 27px 1px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
   }
 
   a {

@@ -30,7 +30,7 @@
   </a>
 </div>
 <span class="flex col" transition:fly={{ y: -100 }}>
-  <a href="/bal">
+  <a href="https://fac-portfolio.vercel.app/">
     <img src="fac.svg" alt="FAC" />
   </a>
   <a href="https://github.com/FomasTreeman">
