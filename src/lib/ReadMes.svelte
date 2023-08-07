@@ -65,7 +65,7 @@
   });
 </script>
 
-<section class=" article-layout pin-board">
+<section class="article-layout pin-board">
   <ol class="project-list">
     {#each pinned as repo}
       <li>
@@ -127,9 +127,9 @@
   } */
 
   .project-list {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 2rem;
     padding: 0px;
     margin-top: 1rem;
@@ -206,6 +206,15 @@
     div {
       margin: 0%;
       margin-top: 4rem;
+    }
+
+    .project-list {
+      margin-inline: 2rem;
+    }
+
+    .article-layout {
+      margin: 0rem;
+      margin-bottom: 4rem;
     }
   }
 </style>
