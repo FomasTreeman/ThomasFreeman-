@@ -116,24 +116,24 @@
 
   .cat {
     background-image: url(https://media1.giphy.com/media/cfuL5gqFDreXxkWQ4o/200.gif);
-    mask-image: url(blob-1.svg);
-    -webkit-mask-image: url(blob-1.svg);
+    mask-image: url(blob-1.svg#gif-blob-1);
+    -webkit-mask-image: url(blob-1.svg#gif-blob-1);
     top: 4rem;
     left: -5rem;
   }
 
   .money {
     background-image: url(https://media0.giphy.com/media/67ThRZlYBvibtdF9JH/200.gif);
-    mask-image: url(wobbly-blob.svg);
-    -webkit-mask-image: url(wobbly-blob.svg);
+    mask-image: url(wobbly-blob.svg#gif-blob-3);
+    -webkit-mask-image: url(wobbly-blob.svg#gif-blob-3);
     top: 20vh;
     right: 5vw;
   }
 
   .rodeo {
     background-image: url(https://media3.giphy.com/media/vgwG8SvPs1cltGeikP/200.gif);
-    mask-image: url(wobbly-blob-2.svg);
-    -webkit-mask-image: url(wobbly-blob-2.svg);
+    mask-image: url(wobbly-blob-2.svg#gif-blob-2);
+    -webkit-mask-image: url(wobbly-blob-2.svg#gif-blob-2);
     top: 40vh;
   }
 
