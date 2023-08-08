@@ -179,8 +179,8 @@
 
   .mask {
     z-index: 2;
-    width: 20vw;
-    height: 20vh;
+    width: 15vw;
+    aspect-ratio: 1;
 
     background-size: cover;
     background-position: center;
